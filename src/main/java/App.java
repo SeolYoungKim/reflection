@@ -1,3 +1,4 @@
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
@@ -39,6 +40,18 @@ public class App {
         });
         System.out.println();
 
+        System.out.println("===============getDeclaredFields4===============");
+        Arrays.stream(declaredFields).forEach(f -> {
+            Arrays.stream(f.getAnnotations()).forEach(a -> {
+                if (a instanceof AnotherAnnotation) {
+                    AnotherAnnotation anotherAnnotation = (AnotherAnnotation) a;
+                    System.out.println(anotherAnnotation.value());
+                    System.out.println(anotherAnnotation.number());
+                }
+            });
+        });
+        System.out.println();
+
         System.out.println("===============getMethods===============");
         Arrays.stream(bookClass.getMethods()).forEach(System.out::println);
         System.out.println();
@@ -55,6 +68,21 @@ public class App {
         System.out.println("===============getInterfaces===============");
         Class<?>[] interfaces = MyBook.class.getInterfaces();
         Arrays.stream(interfaces).forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("===============getAnnotations===============");
+        Annotation[] annotations = Book.class.getAnnotations();
+        Arrays.stream(annotations).forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("===============getAnnotations===============");
+        Annotation[] myBookAnnotation = MyBook.class.getAnnotations();
+        Arrays.stream(myBookAnnotation).forEach(System.out::println);
+        System.out.println();
+
+        System.out.println("===============getDeclaredAnnotations===============");
+        Annotation[] declaredAnnotations = MyBook.class.getDeclaredAnnotations();
+        Arrays.stream(declaredAnnotations).forEach(System.out::println);
         System.out.println();
 
 

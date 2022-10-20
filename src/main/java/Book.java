@@ -1,8 +1,10 @@
+@MyAnnotation
 public class Book {
 
     private static String b = "BOOK";
     private static final String c = "BOOK";
 
+    @AnotherAnnotation
     private String a = "a";
     public String d = "d";
     protected String e = "e";
