@@ -34,11 +34,8 @@ public class App2 {
         c.setAccessible(true);
         c.invoke(note);
 
-
         Method sum = Note.class.getDeclaredMethod("sum", int.class, int.class);
         System.out.println(sum.invoke(note, 1, 2));
-
-
 
     }
 }
